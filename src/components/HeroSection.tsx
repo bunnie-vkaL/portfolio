@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { assetPath } from '@/lib/asset';
 import { ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -28,7 +29,7 @@ export default function HeroSection() {
             className="absolute -top-3.5 -right-5 pointer-events-none"
           >
             <Image
-              src="/assets/figma/hero-spark.svg"
+              src={assetPath('/assets/figma/hero-spark.svg')}
               alt=""
               width={28}
               height={28}
@@ -51,7 +52,7 @@ export default function HeroSection() {
             className="absolute -left-12 lg:-left-16 bottom-3 pointer-events-none hidden md:block"
           >
             <Image
-              src="/assets/figma/hero-doodle.svg"
+              src={assetPath('/assets/figma/hero-doodle.svg')}
               alt=""
               width={74}
               height={85}
@@ -99,7 +100,7 @@ export default function HeroSection() {
           >
             <div className="relative w-full max-w-[520px] aspect-[4/5] transition-transform duration-500 group-hover:scale-[1.015] rounded-[42%] overflow-hidden shadow-2xl ring-8 ring-white">
               <Image
-                src="/assets/hanh-thao-profile.jpeg"
+                src={assetPath('/assets/hanh-thao-profile.jpeg')}
                 alt="Le Vu Hanh Thao"
                 fill
                 priority

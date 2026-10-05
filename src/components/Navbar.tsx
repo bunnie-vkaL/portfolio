@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { assetPath } from '@/lib/asset';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -112,7 +113,7 @@ export default function Navbar() {
         >
           <Link href="#home" className="flex items-center gap-2 group p-2">
             <Image
-              src="/assets/figma/navbar-logo.svg"
+              src={assetPath('/assets/figma/navbar-logo.svg')}
               alt="Hanh Thao logo"
               width={130}
               height={40}

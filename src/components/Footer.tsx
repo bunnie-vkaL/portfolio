@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { assetPath } from '@/lib/asset';
 import { ArrowUpRight, Send, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -108,7 +109,7 @@ export default function Footer() {
           {/* Col 1: Logo, Bio & Socials */}
           <div className="md:col-span-4 flex flex-col items-start gap-4">
             <Image
-              src="/assets/figma/navbar-logo.svg"
+              src={assetPath('/assets/figma/navbar-logo.svg')}
               alt="Hanh Thao logo"
               width={130}
               height={40}

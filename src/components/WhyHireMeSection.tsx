@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { assetPath } from '@/lib/asset';
 import { motion } from 'framer-motion';
 
 export default function WhyHireMeSection() {
@@ -24,7 +25,7 @@ export default function WhyHireMeSection() {
               className="relative w-full max-w-[420px] aspect-[420/520]"
             >
               <Image
-                src="/assets/hanh-thao-profile.jpeg"
+                src={assetPath('/assets/hanh-thao-profile.jpeg')}
                 alt="Le Vu Hanh Thao"
                 fill
                 sizes="(max-width: 1024px) 100vw, 420px"

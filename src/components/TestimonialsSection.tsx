@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { assetPath } from '@/lib/asset';
 import { motion } from 'framer-motion';
 
 export default function TestimonialsSection() {
@@ -22,7 +23,7 @@ export default function TestimonialsSection() {
           className="absolute inset-0 pointer-events-none"
         >
           <Image
-            src="/assets/service-bg.png"
+            src={assetPath('/assets/service-bg.png')}
             alt="Abstract Background"
             fill
             className="object-cover object-center"

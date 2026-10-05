@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { assetPath } from '@/lib/asset';
 
 export default function PortfolioSection() {
   const [activeFilter, setActiveFilter] = useState('LOGage 2026');
@@ -72,7 +73,7 @@ export default function PortfolioSection() {
         >
           <div
             className="absolute inset-0 bg-[#171717] bg-cover bg-center p-8 sm:p-12 flex flex-col justify-end"
-            style={{ backgroundImage: `linear-gradient(90deg, rgba(23,23,23,0.9) 0%, rgba(23,23,23,0.62) 55%, rgba(23,23,23,0.35) 100%), url(${currentProject.image})` }}
+            style={{ backgroundImage: `linear-gradient(90deg, rgba(23,23,23,0.9) 0%, rgba(23,23,23,0.62) 55%, rgba(23,23,23,0.35) 100%), url(${assetPath(currentProject.image)})` }}
           >
             <p className="text-[#FD853A] font-urbanist text-sm font-bold uppercase tracking-[0.2em]">Submitted case answer</p>
             <p className="mt-3 text-white font-urbanist text-3xl sm:text-5xl font-bold">{currentProject.title}</p>
