@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 export default function BlogSection() {
@@ -24,7 +23,7 @@ export default function BlogSection() {
     <section className="py-16 sm:py-20 px-4 sm:px-8 lg:px-[71px] bg-white">
       <div className="max-w-[1298px] mx-auto">
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12 sm:mb-14">
+        <div className="mb-10 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -34,19 +33,6 @@ export default function BlogSection() {
             <h2 className="font-urbanist text-4xl sm:text-6xl md:text-[64px] font-bold tracking-tight text-[#171717] leading-[1.1]">
               My <span className="text-[#FD853A]">Career Plan</span>
             </h2>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 25 }}
-          >
-            <Link
-              href="#blog"
-              className="inline-flex items-center justify-center px-8 py-3.5 rounded-full bg-[#FD853A] text-white font-urbanist font-medium text-base hover:bg-[#fa7521] transition-all shadow-md hover:shadow-orange-500/25 self-start sm:self-auto"
-            >
-              My Roadmap
-            </Link>
           </motion.div>
         </div>
 

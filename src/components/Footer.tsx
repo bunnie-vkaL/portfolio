@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
-import { assetPath } from '@/lib/asset';
 import { ArrowUpRight, Send, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -108,13 +106,11 @@ export default function Footer() {
         <div className="py-12 sm:py-14 grid grid-cols-1 md:grid-cols-12 gap-10 border-b border-white/10">
           {/* Col 1: Logo, Bio & Socials */}
           <div className="md:col-span-4 flex flex-col items-start gap-4">
-            <Image
-              src={assetPath('/assets/figma/navbar-logo.svg')}
-              alt="Hanh Thao logo"
-              width={130}
-              height={40}
-              className="h-8 w-auto object-contain"
-            />
+            <Link href="#home" className="inline-block group select-none">
+              <span className="font-urbanist font-extrabold text-2xl tracking-tight text-white transition-colors duration-200">
+                Hanh <span className="text-[#FD853A]">Thao</span>
+              </span>
+            </Link>
             <p className="font-urbanist text-gray-400 text-xs sm:text-sm leading-relaxed max-w-sm mt-2">
               Le Vu Hanh Thao · International Economics student at Foreign Trade University. Open to sales management, partnerships and commercial growth opportunities.
             </p>
@@ -158,7 +154,7 @@ export default function Footer() {
             <h4 className="font-urbanist text-base font-bold text-white mb-5">Contact</h4>
             <div className="flex flex-col gap-3 font-urbanist text-xs sm:text-sm text-gray-400">
               <p className="hover:text-white transition-colors cursor-pointer">+84 766 079 308</p>
-              <p className="hover:text-white transition-colors cursor-pointer">thaolv.work@gmail.com</p>
+              <p className="hover:text-white transition-colors cursor-pointer">thaolvh.work@gmail.com</p>
               <p className="hover:text-white transition-colors cursor-pointer">Hanoi, Vietnam</p>
             </div>
           </div>

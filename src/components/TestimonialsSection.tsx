@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export default function TestimonialsSection() {
   return (
-    <section className="py-6 sm:py-10 px-4 sm:px-8 lg:px-[71px] bg-white">
+    <section id="skills" className="py-6 sm:py-10 px-4 sm:px-8 lg:px-[71px] bg-white">
       <div className="max-w-[1298px] mx-auto rounded-[40px] md:rounded-[50px] bg-[#171717] text-white p-8 sm:p-12 md:p-16 overflow-hidden relative shadow-[0_25px_60px_rgba(0,0,0,0.4)]">
         {/* Background silky texture with gentle drift */}
         <motion.div

@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
-import Image from 'next/image';
-import { assetPath } from '@/lib/asset';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -16,12 +15,12 @@ interface NavItem {
 const leftLinks: NavItem[] = [
   { label: 'Home', href: '#home', id: 'home' },
   { label: 'About', href: '#about', id: 'about' },
-  { label: 'Service', href: '#services', id: 'services' },
+  { label: 'Experience', href: '#experience', id: 'experience' },
 ];
 
 const rightLinks: NavItem[] = [
-  { label: 'Resume', href: '#experience', id: 'experience' },
-  { label: 'Project', href: '#portfolio', id: 'portfolio' },
+  { label: 'Projects', href: '#portfolio', id: 'portfolio' },
+  { label: 'Skills', href: '#skills', id: 'skills' },
   { label: 'Contact', href: '#contact', id: 'contact' },
 ];
 
@@ -29,10 +28,15 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('home');
   const [hoveredTab, setHoveredTab] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'services', 'experience', 'about', 'portfolio', 'contact'];
+      const sections = ['home', 'about', 'experience', 'portfolio', 'skills', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -90,14 +94,14 @@ export default function Navbar() {
     );
   };
 
-  return (
-    <header className="w-full pt-6 sm:pt-8 md:pt-10 pb-2 px-4 sm:px-8 lg:px-[71px] relative z-50">
+  const navbarContent = (
+    <header className="fixed top-0 left-0 right-0 z-50 w-full pt-4 sm:pt-6 pb-2 px-4 sm:px-8 lg:px-[71px] pointer-events-none">
       {/* Floating Dark Pill Navbar with subtle entrance animation */}
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="max-w-[1298px] h-[72px] sm:h-[86px] mx-auto bg-[#171717] rounded-full px-4 sm:px-6 md:px-8 flex items-center justify-between relative shadow-[0_20px_50px_rgba(0,0,0,0.35)] border border-white/10 backdrop-blur-md"
+        className="max-w-[1298px] h-[72px] sm:h-[86px] mx-auto bg-[#171717] rounded-full px-4 sm:px-6 md:px-8 flex items-center justify-between relative shadow-[0_20px_50px_rgba(0,0,0,0.35)] border border-white/10 backdrop-blur-md pointer-events-auto"
       >
         {/* Left Links */}
         <div className="hidden lg:flex items-center gap-1 xl:gap-2 flex-1 justify-start">
@@ -106,20 +110,15 @@ export default function Navbar() {
 
         {/* Center Logo - Perfectly Centered with spring hover */}
         <motion.div
-          whileHover={{ scale: 1.06, rotate: [-1, 1, 0] }}
+          whileHover={{ scale: 1.06 }}
           whileTap={{ scale: 0.95 }}
           transition={{ type: 'spring', stiffness: 400, damping: 20 }}
           className="lg:absolute lg:left-1/2 lg:-translate-x-1/2"
         >
-          <Link href="#home" className="flex items-center gap-2 group p-2">
-            <Image
-              src={assetPath('/assets/figma/navbar-logo.svg')}
-              alt="Hanh Thao logo"
-              width={130}
-              height={40}
-              className="h-8 sm:h-9 w-auto object-contain transition-transform duration-300"
-              priority
-            />
+          <Link href="#home" className="flex items-center gap-2 group p-2 select-none">
+            <span className="font-urbanist font-extrabold text-xl sm:text-2xl tracking-tight text-white transition-colors duration-200">
+              Hanh <span className="text-[#FD853A]">Thao</span>
+            </span>
           </Link>
         </motion.div>
 
@@ -147,7 +146,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.98 }}
             transition={{ duration: 0.2 }}
-            className="lg:hidden mt-3 max-w-[1298px] mx-auto bg-[#171717] rounded-3xl p-5 border border-white/10 shadow-2xl flex flex-col gap-2"
+            className="lg:hidden mt-3 max-w-[1298px] mx-auto bg-[#171717] rounded-3xl p-5 border border-white/10 shadow-2xl flex flex-col gap-2 pointer-events-auto"
           >
             {[...leftLinks, ...rightLinks].map((item) => {
               const isActive = activeTab === item.id;
@@ -173,5 +172,13 @@ export default function Navbar() {
         )}
       </AnimatePresence>
     </header>
+  );
+
+  return (
+    <>
+      {/* Spacer to preserve document layout height so Hero isn't overlapped */}
+      <div className="h-[96px] sm:h-[114px] w-full pointer-events-none" aria-hidden="true" />
+      {mounted ? createPortal(navbarContent, document.body) : navbarContent}
+    </>
   );
 }
