@@ -66,7 +66,7 @@ export default function ExperienceSection() {
             const isHovered = hoveredIdx === idx;
             return (
               <motion.div
-                key={exp.company}
+                key={`${exp.company}-${exp.role}-${idx}`}
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
